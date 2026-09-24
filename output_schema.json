@@ -1,11 +1,12 @@
 {
+  "actorOutputSchemaVersion": 1,
   "title": "ATP/WTA match-winner projections",
-  "type": "object",
   "properties": {
     "matches": {
       "title": "Matches",
-      "type": "array",
-      "template": "{{links.datasetUrl}}"
+      "description": "One row per player per match, with the model probability, live Kalshi price and edge/value verdict.",
+      "type": "string",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
     }
   }
 }
