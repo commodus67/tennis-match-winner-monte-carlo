@@ -66,6 +66,30 @@ function setsWonFromLinescores(linescores) {
  */
 
 /**
+ * True for a doubles draw. Each event carries one grouping per draw
+ * (singles, doubles); doubles competitors are teams described by `roster`
+ * with no `athlete`, so their displayName is undefined. This Actor is
+ * singles-only (rankings and KXATPMATCH/KXWTAMATCH are singles), so those
+ * draws are skipped. Checked at both the grouping and competitor level
+ * because only the competitor shape is guaranteed.
+ */
+function isDoublesGrouping(grouping) {
+  const g = grouping.grouping || {};
+  const label = [g.slug, g.displayName, g.name, grouping.type].filter(Boolean).join(' ');
+  return /doubles/i.test(label);
+}
+
+function isTeamCompetitor(competitor) {
+  return !competitor.athlete && (!!competitor.roster || competitor.type === 'team');
+}
+
+/** Singles player name, with ESPN's own "TBD" placeholder as the fallback when no athlete is known yet. */
+function competitorName(competitor) {
+  const name = competitor.athlete && competitor.athlete.displayName;
+  return typeof name === 'string' && name.trim() ? name : 'TBD';
+}
+
+/**
  * Flatten a scoreboard response into one row per singles match, joined
  * against the rankings map for each competitor's points. Matches with only
  * one or with more than two competitors (data anomalies, or a doubles pair
@@ -87,16 +111,16 @@ function extractMatches(scoreboardJson, league, rankingsById, setsToWinFor, opts
   for (const event of events) {
     const tournamentName = event.name;
     for (const grouping of event.groupings || []) {
+      if (isDoublesGrouping(grouping)) continue;
       for (const competition of grouping.competitions || []) {
         const roundName = (competition.round && competition.round.displayName) || '';
         if (!includeQualifying && /qualifying/i.test(roundName)) continue;
         const competitors = competition.competitors || [];
         if (competitors.length !== 2) continue;
+        if (competitors.some(isTeamCompetitor)) continue;
         // ESPN's homeAway ordering isn't meaningful for tennis; use `order` when present, else array order.
         const sorted = [...competitors].sort((a, b) => (a.order || 0) - (b.order || 0));
         const [c1, c2] = sorted;
-        const athlete1 = c1.athlete || {};
-        const athlete2 = c2.athlete || {};
         const rank1 = rankingsById.get(String(c1.id));
         const rank2 = rankingsById.get(String(c2.id));
         matches.push({
@@ -110,7 +134,7 @@ function extractMatches(scoreboardJson, league, rankingsById, setsToWinFor, opts
           setsToWin: setsToWinFor(league, tournamentName),
           playerA: {
             athleteId: String(c1.id),
-            displayName: athlete1.displayName,
+            displayName: competitorName(c1),
             points: rank1 ? rank1.points : null,
             rank: rank1 ? rank1.rank : null,
             setsWon: setsWonFromLinescores(c1.linescores),
@@ -118,7 +142,7 @@ function extractMatches(scoreboardJson, league, rankingsById, setsToWinFor, opts
           },
           playerB: {
             athleteId: String(c2.id),
-            displayName: athlete2.displayName,
+            displayName: competitorName(c2),
             points: rank2 ? rank2.points : null,
             rank: rank2 ? rank2.rank : null,
             setsWon: setsWonFromLinescores(c2.linescores),
