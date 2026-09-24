@@ -1,0 +1,52 @@
+{
+  "events": [
+    {
+      "name": "Chengdu Open",
+      "groupings": [
+        {
+          "type": "",
+          "competitions": [
+            {
+              "id": "183393",
+              "date": "2026-09-24T12:45Z",
+              "startDate": "2026-09-24T12:45Z",
+              "status": {
+                "period": 2,
+                "type": {"id": "2", "name": "STATUS_IN_PROGRESS", "state": "in", "completed": false, "description": "In Progress", "detail": "2nd Set", "shortDetail": "2nd"}
+              },
+              "round": {"id": "1", "displayName": "Round 1"},
+              "competitors": [
+                {"id": "13444", "order": 2, "homeAway": "away", "winner": false, "linescores": [{"value": 4, "winner": false}, {"value": 0}], "athlete": {"displayName": "Zhou Yi", "firstName": "Yi", "lastName": "Zhou"}},
+                {"id": "4008", "order": 1, "homeAway": "home", "winner": false, "linescores": [{"value": 6, "winner": true}, {"value": 0}], "athlete": {"displayName": "Juan Manuel Cerundolo", "firstName": "Juan Manuel", "lastName": "Cerundolo"}}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AITO Hangzhou Open",
+      "groupings": [
+        {
+          "type": "",
+          "competitions": [
+            {
+              "id": "183368",
+              "date": "2026-09-25T08:30Z",
+              "startDate": "2026-09-25T08:30Z",
+              "status": {
+                "period": 1,
+                "type": {"id": "1", "name": "STATUS_SCHEDULED", "state": "pre", "completed": false, "description": "Scheduled", "detail": "Fri, September 25th at 4:30 AM EDT", "shortDetail": "9/25 - 4:30 AM EDT"}
+              },
+              "round": {"id": "2", "displayName": "Round 2"},
+              "competitors": [
+                {"id": "2642", "order": 2, "homeAway": "away", "athlete": {"displayName": "Andrey Rublev", "firstName": "Andrey", "lastName": "Rublev"}},
+                {"id": "3716", "order": 1, "homeAway": "home", "athlete": {"displayName": "Rinky Hijikata", "firstName": "Rinky", "lastName": "Hijikata"}}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

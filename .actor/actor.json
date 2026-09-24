@@ -1,0 +1,14 @@
+{
+  "actorSpecification": 1,
+  "name": "tennis-match-winner-monte-carlo",
+  "title": "ATP/WTA Tennis Match Winner Monte Carlo + Kalshi",
+  "description": "Monte Carlo match-win probabilities for live and upcoming ATP/WTA singles matches, from current ranking points, compared against Kalshi KXATPMATCH/KXWTAMATCH prices for edge.",
+  "version": "0.0.1",
+  "buildTag": "latest",
+  "input": "./input_schema.json",
+  "dockerfile": "../Dockerfile",
+  "storages": {
+    "dataset": "../dataset_schema.json"
+  },
+  "output": "../output_schema.json"
+}

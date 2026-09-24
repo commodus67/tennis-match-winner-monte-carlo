@@ -1,0 +1,16 @@
+{
+  "actorSpecification": 1,
+  "note": "The Console monetization wizard does NOT read this file automatically -- these events must also be typed into the wizard by hand when setting up monetization (verified on the prior 6 Actors). Kept here as the source of truth for what Actor.charge() calls in src/main.js expect to exist, and as a starting point for the wizard's per-tier prices.",
+  "events": {
+    "match-projection": {
+      "eventTitle": "Match projection",
+      "eventDescription": "One row: one player's Monte Carlo win probability for one ATP/WTA match, with the Kalshi edge comparison if enabled.",
+      "eventPriceUsd": 0.01
+    },
+    "apify-actor-start": {
+      "eventTitle": "Actor start",
+      "eventDescription": "Per-run start fee.",
+      "eventPriceUsd": 0.00005
+    }
+  }
+}

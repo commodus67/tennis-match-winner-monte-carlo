@@ -1,0 +1,114 @@
+{
+  "title": "ATP/WTA Tennis Match Winner Monte Carlo + Kalshi",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "leagues": {
+      "title": "Tour",
+      "type": "string",
+      "description": "Which tour(s) to scan.",
+      "editor": "select",
+      "enum": ["both", "atp", "wta"],
+      "enumTitles": ["ATP + WTA", "ATP only", "WTA only"],
+      "default": "both"
+    },
+    "includeMarketComparison": {
+      "title": "Compare against Kalshi",
+      "type": "boolean",
+      "description": "Fetch live KXATPMATCH/KXWTAMATCH prices and compute edge/value verdicts. Turn off for a model-only run (no Kalshi calls).",
+      "default": true
+    },
+    "iterations": {
+      "title": "Monte Carlo iterations",
+      "type": "integer",
+      "description": "Simulations run per LIVE match (matches already in progress). Pre-match projections use an exact closed-form calculation and ignore this.",
+      "default": 20000,
+      "minimum": 1000,
+      "maximum": 200000
+    },
+    "rankingSensitivity": {
+      "title": "Ranking sensitivity (k)",
+      "type": "number",
+      "description": "Bradley-Terry exponent on ranking points. 1.0 = plain points ratio (the calibrated default, 24 Sep 2026). Higher makes the model more confident in the higher-ranked player; lower flattens it.",
+      "default": 1
+    },
+    "strengthUncertainty": {
+      "title": "Strength uncertainty blend",
+      "type": "number",
+      "description": "Blends the raw ranking-based probability toward a coin flip (0 = trust the model fully, 1 = always 50/50). Hedges against surface, form and H2H that ranking points alone can't see.",
+      "default": 0.15,
+      "minimum": 0,
+      "maximum": 1
+    },
+    "unrankedPoints": {
+      "title": "Unranked player points floor",
+      "type": "integer",
+      "description": "Ranking points assigned to a player with no current ATP/WTA ranking (qualifier, wildcard, outside the top 150).",
+      "default": 200
+    },
+    "edgeThreshold": {
+      "title": "Edge threshold for VALUE",
+      "type": "number",
+      "description": "Minimum fee-adjusted edge (model probability minus Kalshi ask minus fee) to mark a row VALUE instead of WATCH.",
+      "default": 0.05,
+      "minimum": 0,
+      "maximum": 1
+    },
+    "bankroll": {
+      "title": "Bankroll (USD)",
+      "type": "number",
+      "description": "Used only to size suggested Kelly stakes. Leave at 0 to see edges without position sizing.",
+      "default": 0,
+      "minimum": 0
+    },
+    "maxPerPositionPct": {
+      "title": "Max stake per position (fraction of bankroll)",
+      "type": "number",
+      "default": 0.02,
+      "minimum": 0,
+      "maximum": 1
+    },
+    "maxTotalExposurePct": {
+      "title": "Max total exposure (fraction of bankroll)",
+      "type": "number",
+      "default": 0.2,
+      "minimum": 0,
+      "maximum": 1
+    },
+    "kellyFractionMultiplier": {
+      "title": "Kelly fraction multiplier",
+      "type": "number",
+      "description": "0.5 = half-Kelly (conservative default). 1.0 = full Kelly.",
+      "default": 0.5,
+      "minimum": 0,
+      "maximum": 1
+    },
+    "minMarketOpenInterest": {
+      "title": "Minimum Kalshi open interest",
+      "type": "integer",
+      "description": "Markets with less open interest than this are marked ILLIQUID instead of being scored for edge. Most match-winner markets sit near zero until the day of the match.",
+      "default": 5,
+      "minimum": 0
+    },
+    "maxMatchesPerLeague": {
+      "title": "Max matches per tour (0 = no cap)",
+      "type": "integer",
+      "default": 0,
+      "minimum": 0
+    },
+    "includeQualifying": {
+      "title": "Include qualifying rounds",
+      "type": "boolean",
+      "description": "Off by default: qualifying-round matches rarely have a Kalshi KXATPMATCH/KXWTAMATCH market, so including them adds chargeable rows with no market comparison.",
+      "default": false
+    },
+    "archiveToNamedDataset": {
+      "title": "Archive to a named dataset",
+      "type": "string",
+      "description": "Optional. If set, every row is ALSO appended to a named dataset with this name (kept indefinitely, unlike the default 31-day run dataset) for building a running history.",
+      "default": "",
+      "editor": "textfield"
+    }
+  },
+  "required": []
+}

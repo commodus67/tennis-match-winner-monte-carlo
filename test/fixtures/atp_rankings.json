@@ -1,0 +1,23 @@
+{
+  "rankings": [
+    {
+      "id": "1",
+      "name": "ATP",
+      "shortName": "ATP",
+      "type": "atp",
+      "update": "2026-09-17T07:00Z",
+      "ranks": [
+        {"current":1,"previous":1,"points":11500,"trend":"-","athlete":{"id":"3623","displayName":"Jannik Sinner","firstName":"Jannik","lastName":"Sinner"}},
+        {"current":2,"previous":2,"points":9690,"trend":"-","athlete":{"id":"2375","displayName":"Alexander Zverev","firstName":"Alexander","lastName":"Zverev"}},
+        {"current":3,"previous":3,"points":5560,"trend":"-","athlete":{"id":"3782","displayName":"Carlos Alcaraz","firstName":"Carlos","lastName":"Alcaraz"}},
+        {"current":25,"previous":25,"points":1930,"trend":"-","athlete":{"id":"2642","displayName":"Andrey Rublev","firstName":"Andrey","lastName":"Rublev"}},
+        {"current":32,"previous":28,"points":1565,"trend":"-4","athlete":{"id":"2970","displayName":"Alejandro Tabilo","firstName":"Alejandro","lastName":"Tabilo"}},
+        {"current":48,"previous":48,"points":1095,"trend":"-","athlete":{"id":"4115","displayName":"Nuno Borges","firstName":"Nuno","lastName":"Borges"}},
+        {"current":75,"previous":76,"points":770,"trend":"+1","athlete":{"id":"3666","displayName":"Camilo Ugo Carabelli","firstName":"Camilo","lastName":"Ugo Carabelli"}},
+        {"current":77,"previous":78,"points":763,"trend":"+1","athlete":{"id":"3621","displayName":"Jenson Brooksby","firstName":"Jenson","lastName":"Brooksby"}},
+        {"current":82,"previous":85,"points":700,"trend":"+3","athlete":{"id":"3716","displayName":"Rinky Hijikata","firstName":"Rinky","lastName":"Hijikata"}},
+        {"current":86,"previous":86,"points":683,"trend":"-","athlete":{"id":"3052","displayName":"Lorenzo Sonego","firstName":"Lorenzo","lastName":"Sonego"}}
+      ]
+    }
+  ]
+}

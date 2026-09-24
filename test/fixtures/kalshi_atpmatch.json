@@ -1,0 +1,54 @@
+[
+  {
+    "ticker": "KXATPMATCH-26SEP25HIJRUB-RUB",
+    "event_ticker": "KXATPMATCH-26SEP25HIJRUB",
+    "yes_sub_title": "Andrey Rublev",
+    "no_sub_title": "Andrey Rublev",
+    "yes_bid_dollars": "0.6900",
+    "yes_ask_dollars": "0.7100",
+    "no_bid_dollars": "0.2900",
+    "no_ask_dollars": "0.3100",
+    "open_interest_fp": "43.25",
+    "volume_fp": "43.25",
+    "status": "active"
+  },
+  {
+    "ticker": "KXATPMATCH-26SEP25HIJRUB-HIJ",
+    "event_ticker": "KXATPMATCH-26SEP25HIJRUB",
+    "yes_sub_title": "Rinky Hijikata",
+    "no_sub_title": "Rinky Hijikata",
+    "yes_bid_dollars": "0.2800",
+    "yes_ask_dollars": "0.2900",
+    "no_bid_dollars": "0.7100",
+    "no_ask_dollars": "0.7200",
+    "open_interest_fp": "328.50",
+    "volume_fp": "328.50",
+    "status": "active"
+  },
+  {
+    "ticker": "KXATPMATCH-26SEP21CERZHO-ZHO",
+    "event_ticker": "KXATPMATCH-26SEP21CERZHO",
+    "yes_sub_title": "Yi Zhou",
+    "no_sub_title": "Yi Zhou",
+    "yes_bid_dollars": "0.1900",
+    "yes_ask_dollars": "0.2000",
+    "no_bid_dollars": "0.8000",
+    "no_ask_dollars": "0.8100",
+    "open_interest_fp": "251548.96",
+    "volume_fp": "280992.65",
+    "status": "active"
+  },
+  {
+    "ticker": "KXATPMATCH-26SEP21CERZHO-CER",
+    "event_ticker": "KXATPMATCH-26SEP21CERZHO",
+    "yes_sub_title": "Juan Manuel Cerundolo",
+    "no_sub_title": "Juan Manuel Cerundolo",
+    "yes_bid_dollars": "0.8000",
+    "yes_ask_dollars": "0.8100",
+    "no_bid_dollars": "0.1900",
+    "no_ask_dollars": "0.2000",
+    "open_interest_fp": "162876.48",
+    "volume_fp": "230534.42",
+    "status": "active"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "title": "ATP/WTA match-winner projections",
+  "type": "object",
+  "properties": {
+    "matches": {
+      "title": "Matches",
+      "type": "array",
+      "template": "{{links.datasetUrl}}"
+    }
+  }
+}

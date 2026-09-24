@@ -1,0 +1,96 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+      "league": { "type": "string", "enum": ["atp", "wta"] },
+      "tournamentName": { "type": "string" },
+      "round": { "type": ["string", "null"] },
+      "competitionId": { "type": "string" },
+      "matchState": { "type": "string", "enum": ["pre", "in", "post", "unknown"] },
+      "setsToWin": { "type": "integer" },
+      "player": { "type": "string" },
+      "playerId": { "type": "string" },
+      "playerPoints": { "type": ["number", "null"] },
+      "playerRank": { "type": ["integer", "null"] },
+      "playerSetsWon": { "type": "integer" },
+      "opponent": { "type": "string" },
+      "opponentId": { "type": "string" },
+      "opponentPoints": { "type": ["number", "null"] },
+      "opponentRank": { "type": ["integer", "null"] },
+      "opponentSetsWon": { "type": "integer" },
+      "winProbability": { "type": "number" },
+      "preMatchProbability": { "type": "number" },
+      "impliedSetProbability": { "type": "number" },
+      "method": { "type": "string", "enum": ["pre-match", "live-simulation"] },
+      "kalshiTicker": { "type": ["string", "null"] },
+      "kalshiYesBid": { "type": ["number", "null"] },
+      "kalshiYesAsk": { "type": ["number", "null"] },
+      "kalshiOpenInterest": { "type": ["number", "null"] },
+      "side": { "type": ["string", "null"], "enum": ["YES", "NO", null] },
+      "edge": { "type": ["number", "null"] },
+      "verdict": { "type": ["string", "null"], "enum": ["VALUE", "WATCH", "NO_MARKET", "ILLIQUID", null] },
+      "kellyFraction": { "type": ["number", "null"] },
+      "suggestedStake": { "type": ["number", "null"] },
+      "simulations": { "type": "integer" },
+      "retrievedAt": { "type": "string" }
+    },
+    "required": ["league", "tournamentName", "player", "opponent", "winProbability", "method", "retrievedAt"]
+  },
+  "views": {
+    "overview": {
+      "title": "Match overview",
+      "description": "One row per player per match, with the model's win probability.",
+      "transformation": {
+        "fields": [
+          "league", "tournamentName", "round", "matchState", "player", "playerRank", "playerSetsWon",
+          "opponent", "opponentRank", "opponentSetsWon", "winProbability", "method"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "league": { "label": "Tour" },
+          "tournamentName": { "label": "Tournament" },
+          "round": { "label": "Round" },
+          "matchState": { "label": "State" },
+          "player": { "label": "Player" },
+          "playerRank": { "label": "Rank" },
+          "playerSetsWon": { "label": "Sets" },
+          "opponent": { "label": "Opponent" },
+          "opponentRank": { "label": "Opp. rank" },
+          "opponentSetsWon": { "label": "Opp. sets" },
+          "winProbability": { "label": "Win probability", "format": "number" },
+          "method": { "label": "Method" }
+        }
+      }
+    },
+    "edge": {
+      "title": "Market edge",
+      "description": "Model probability vs. Kalshi price, with a VALUE/WATCH verdict and a suggested (half-Kelly by default) stake.",
+      "transformation": {
+        "fields": [
+          "league", "tournamentName", "player", "opponent", "winProbability",
+          "kalshiYesAsk", "kalshiOpenInterest", "side", "edge", "verdict", "suggestedStake"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "league": { "label": "Tour" },
+          "tournamentName": { "label": "Tournament" },
+          "player": { "label": "Player" },
+          "opponent": { "label": "Opponent" },
+          "winProbability": { "label": "Model prob.", "format": "number" },
+          "kalshiYesAsk": { "label": "Kalshi ask", "format": "number" },
+          "kalshiOpenInterest": { "label": "Open interest", "format": "number" },
+          "side": { "label": "Side" },
+          "edge": { "label": "Edge", "format": "number" },
+          "verdict": { "label": "Verdict" },
+          "suggestedStake": { "label": "Suggested stake", "format": "number" }
+        }
+      }
+    }
+  }
+}

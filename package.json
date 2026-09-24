@@ -1,0 +1,14 @@
+{
+  "name": "tennis-match-winner-monte-carlo",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "ATP/WTA match-winner Monte Carlo probabilities vs Kalshi prediction markets",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "apify": "^3.7.2"
+  }
+}
