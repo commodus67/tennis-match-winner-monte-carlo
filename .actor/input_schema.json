@@ -63,6 +63,7 @@
     },
     "maxPerPositionPct": {
       "title": "Max stake per position (fraction of bankroll)",
+      "description": "Caps a single suggested Kelly stake as a fraction of bankroll, even if the fractional-Kelly formula suggests more.",
       "type": "number",
       "default": 0.02,
       "minimum": 0,
@@ -70,6 +71,7 @@
     },
     "maxTotalExposurePct": {
       "title": "Max total exposure (fraction of bankroll)",
+      "description": "Caps total suggested exposure across all open positions as a fraction of bankroll.",
       "type": "number",
       "default": 0.2,
       "minimum": 0,
@@ -92,6 +94,7 @@
     },
     "maxMatchesPerLeague": {
       "title": "Max matches per tour (0 = no cap)",
+      "description": "Limits how many matches per tour (ATP/WTA) are scanned per run, to bound cost on days with many simultaneous tournaments. 0 = no cap.",
       "type": "integer",
       "default": 0,
       "minimum": 0
